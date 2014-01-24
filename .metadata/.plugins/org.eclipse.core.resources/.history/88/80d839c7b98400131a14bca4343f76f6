@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
     	LinearLayout mainContent = (LinearLayout) findViewById(R.id.mainContent);
     	LinearLayout inputControls = (LinearLayout) View.inflate(getApplicationContext(),R.layout.input_controls_content, null);
     	mainContent.addView(btnList);
-    	mainContent.addView(inputControls);
+    	inputControls.addView(inputControls);
     }
 
 

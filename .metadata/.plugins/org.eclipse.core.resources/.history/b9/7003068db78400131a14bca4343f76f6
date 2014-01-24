@@ -7,6 +7,5 @@
     <string name="btn_Search">Buscar</string>
     <string name="btn_open_activity">Pasar a otra actividad</string>
     <string name="title_activity_show_search_query">ShowSearchQueryActivity</string>
-    <string name="btn_list">Lista</string>
 
 </resources>

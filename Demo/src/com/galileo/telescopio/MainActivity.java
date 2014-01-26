@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
-	
+	Button btnList;
 	Button btnSearch;
 	Button btnOpenActivity;
 	ScrollView inputControls;
@@ -38,20 +38,22 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+        btnList = (Button)findViewById(R.id.btnList);
+
         btnSearch = (Button)findViewById(R.id.btnSearch);
         btnOpenActivity = (Button) findViewById(R.id.btnOpenActivity);
         ButtonListener listener = new ButtonListener();
     	btnSearch.setOnClickListener(listener);
     	btnOpenActivity.setOnClickListener(listener);
-    	
+    	btnList.setOnClickListener(listener);
+    	/*
     	Button btnList = new Button(this);
     	btnList.setText(R.string.btn_list);
     	btnList.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
-    	
+    	*/
     	LinearLayout mainContent = (LinearLayout) findViewById(R.id.mainContent);
     	inputControls = (ScrollView) View.inflate(getApplicationContext(),R.layout.input_controls_content, null);
-    	mainContent.addView(btnList);
+    	//mainContent.addView(btnList);
     	setInputControls();
     	mainContent.addView(inputControls);
     }
@@ -138,6 +140,8 @@ public class MainActivity extends Activity {
 				if(v.getId()==btnOpenActivity.getId()){
 				    intent = new Intent(getApplicationContext(),ShowSearchQueryActivity.class);
 					intent.putExtra(ShowSearchQueryActivity.QUERY, searchQueryText);
+				}else if(v.getId()==btnList.getId()){
+				    intent = new Intent(getApplicationContext(),EmailActivity.class);						
 				}else if(v.getId()==btnSearch.getId()){
 					intent = new Intent(Intent.ACTION_VIEW);
 					intent.setData(Uri.parse(url));

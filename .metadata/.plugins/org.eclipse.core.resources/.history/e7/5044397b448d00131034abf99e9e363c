@@ -1,0 +1,42 @@
+package com.sp.mall;
+
+public class Store {
+	private String store;
+	private String address;
+	private int phoneNumber;
+	private int horaryI;
+	private int horaryF;
+	private String webSite;
+	private String email;
+	public Store(String n,String d,int t,int h,String w, String e){
+		this.store = n;
+		this.address=d;
+		this.phoneNumber=t;
+		this.horaryI = h;
+		this.horaryF = h;
+		this.webSite=w;
+		this.email=e;
+	}
+	
+	public String getStore(){
+		return this.store.toString();
+	}
+	
+	public String getAdress(){
+		return this.address.toString();
+	}
+	
+	public int getPhoneNumber(){
+		return  this.phoneNumber;
+	}
+	public int getHorary(){
+		return  this.horary;
+	}
+	public String getWebSite(){
+		return  this.webSite.toString();
+	}
+	public String getEmail(){
+		return  this.email.toString();
+	}
+
+}

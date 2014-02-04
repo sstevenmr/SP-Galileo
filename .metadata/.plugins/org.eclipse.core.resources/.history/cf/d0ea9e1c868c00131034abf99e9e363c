@@ -1,0 +1,53 @@
+package com.sp.mall;
+
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
+
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+public class MainActivity extends ListActivity {
+	private final static String EMAIL = "email";
+	private final static String DATE_ADDED = "date";
+	private List<HashMap<String,String>> emails = new ArrayList<HashMap<String,String>>();
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		this.setTextArray();
+		
+		ListView lista = (ListView) findViewById(R.id.listView1);
+		lista.setAdapter( new ArrayAdapter<String>(this, R.layout.activity_main, tiendas));
+	
+	}
+	public void setTextArray(){
+		tiendas.add(new HashMap"Tienda de Zapatos");
+		tiendas.add(2,"Tienda de Ropa");
+		tiendas.add(3,"Tienda de Libros");
+		tiendas.add(4,"Tienda de Tecnologia");
+		tiendas.add(5,"Tienda de Electrodomesticos");
+		tiendas.add(6,"Tienda de Deportes");
+	
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}

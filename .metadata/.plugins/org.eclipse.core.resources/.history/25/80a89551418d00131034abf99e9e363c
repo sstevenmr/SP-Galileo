@@ -1,0 +1,13 @@
+package com.sp.mall;
+
+public class Store {
+	private String store;
+	private String address;
+	private int phoneNumber;
+	public Store(String n,String d,int t){
+		this.store = n;
+		this.address=d;
+		this.phoneNumber=t;
+	}
+
+}

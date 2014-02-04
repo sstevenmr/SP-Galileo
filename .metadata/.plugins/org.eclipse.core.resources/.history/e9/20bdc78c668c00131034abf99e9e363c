@@ -1,0 +1,9 @@
+<resources>
+	    <style name="EdtBar">
+	         <item name="android:background">#3366CC</item>
+		</style>
+		<style name="TemaPersonalizado" parent="android:Theme">
+	         <item name="android:windowTitleSize">40dip</item>
+	       
+		</style>
+</resources>

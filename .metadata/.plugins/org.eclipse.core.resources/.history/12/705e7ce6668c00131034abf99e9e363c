@@ -1,0 +1,9 @@
+<resources>
+	    <style name="EdtBar">
+	         <item name="android:background">@style/EdtBar</item>
+		</style>
+		<style name="TemaPersonalizado" parent="android:Theme">
+	         <item name="android:windowTitleSize">40dip</item>
+	         <item name="android:windowTitleBackgroundStyle">@style/EdtBar</item>
+		</style>
+</resources>

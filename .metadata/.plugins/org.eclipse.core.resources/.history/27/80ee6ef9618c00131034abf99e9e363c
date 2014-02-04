@@ -1,0 +1,6 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="BarLaunch">
+      <item name="android:background">#3366CC</item>
+</style>
+
+</resources>

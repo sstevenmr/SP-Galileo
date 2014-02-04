@@ -1,0 +1,13 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+   <resources>
+	     <style name="FondoBarraPersonalizada">
+	         <item name="android:background">#3366CC</item>
+	</style>
+	<style name="TemaPersonalizado" parent="android:Theme">
+	         <item name="android:windowTitleSize">40dip</item>
+	         
+	</style>
+	 </resources>
+
+
+</resources>

@@ -1,0 +1,17 @@
+package com.sp.mall;
+
+public class Store {
+	private String store;
+	private String address;
+	private int phoneNumber;
+	private int horary;
+	private String webSite;
+	public Store(String n,String d,int t,int h){
+		this.store = n;
+		this.address=d;
+		this.phoneNumber=t;
+		this.horary = h;
+		
+	}
+
+}

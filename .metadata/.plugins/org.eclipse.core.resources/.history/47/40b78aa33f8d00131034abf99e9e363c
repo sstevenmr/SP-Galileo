@@ -1,0 +1,8 @@
+package com.sp.mall;
+
+public class Store {
+	public store(String tienda){
+		
+	}
+
+}

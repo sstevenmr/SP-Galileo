@@ -1,0 +1,6 @@
+<resources>
+    <style name="BarLaunch" parent="android:Theme.Holo.Light">
+       
+    </style>
+
+</resources>

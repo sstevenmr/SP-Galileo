@@ -1,0 +1,57 @@
+package com.sp.mall;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import com.sp.mall.Store;
+
+public class MainActivity extends Activity {
+	ListView lista;
+	ArrayAdapter<String> adaptador;
+	ArrayList<ArrayList<String>> stores;
+	
+    Intent intent = null;
+    Store store = null;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+         store = new Store("Tienda de Zapatos","14 calle 15-21 zona 10",51328978,10,8,"www.kzaptos.com","kzaptos@gmail.com");
+        
+         this.generator();
+       
+    }
+ 
+    public void addData(){
+        stores.add();
+        
+    }
+    
+    public void generator(){
+    	 stores = new ArrayList<ArrayList<String>>();
+         this.addData();
+         lista = (ListView) findViewById(R.id.listView1);
+         adaptador = new ArrayAdapter<ArrayList(String)>(this,android.R.layout.simple_list_item_1, stores);
+         lista.setAdapter(adaptador);
+         lista.setTextFilterEnabled(true);
+         lista.setOnItemClickListener(new OnItemClickListener() {
+ 	    		public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+ 	    				intent = new Intent(getApplicationContext(),DetailsActivity.class);
+ 	    				intent.putExtra(DetailsActivity.QUERY,stores.get((int)position).toString());
+ 	    				
+ 	    				
+ 	    				startActivity(intent);
+ 	            }
+ 	     });
+    }
+  
+    
+    
+}

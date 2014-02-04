@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BlitMall</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="item_ropa">Tienda de Ropa</string>
+    <string name="item_zapatos">Tienda de Zapatos</string>
+    <string name="item_libros">Tienda de Libros</string>
+    <string name="item_tecnologia">Tienda de Tecnologia</string>
+    <string name="title_activity_ropa">RopaActivity</string>
+    <string name="title_activity_details">DetailsActivity</string>
+
+</resources>

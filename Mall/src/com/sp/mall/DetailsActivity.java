@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class DetailsActivity extends Activity {
@@ -29,14 +33,30 @@ public class DetailsActivity extends Activity {
 		setContentView(R.layout.activity_details);		
 		this.createStore();
 		this.changeTextView();
+		this.call();
+		
 	}
 	
+	public void call(){
+		Button btnCall = (Button) findViewById(R.id.btnCall);
+		btnCall.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(Intent.ACTION_DIAL);
+				intent.setData(Uri.parse("tel:"+txtPhoneNumber.getText()));
+				startActivity(intent);
+				
+			}
+		});
+	}
 	public void createStore(){
 		datos = new ArrayList<Store>();
-		datos.add(new Store("Tienda de Zapatos","14 calle 15-21 zona 10","51328976","10:00","8:00","www.kzaptos.com","kzaptos@blitmall.com"));
-		datos.add( new Store("Tienda de Ropa","15 calle 15-21 zona 10","51328977","10:00","8:00","www.kropa.com","kropa@blitmall.com"));
-		datos.add( new Store("Tienda de Libros","16 calle 15-21 zona 10","51328979","10:00","8:00","www.klibros.com","klibros@blitmall.com"));	
-	 	datos.add(new Store("Tienda de Tecnologia","17 calle, 15-21 ,zona 10 Guatemala","51328980","10:00","8:00","www.ktecnologia.com","ktecnologia@blitmall.com"));
+		datos.add(new Store("Tienda de Zapatos","435 Mayfield Ave, Stanford, CA","51328976","10:00","8:00","www.kzaptos.com","kzaptos@blitmall.com"));
+		datos.add( new Store("Tienda de Ropa","436 Mayfield Ave, Stanford, CA","51328977","10:00","8:00","www.kropa.com","kropa@blitmall.com"));
+		datos.add( new Store("Tienda de Libros","437 Mayfield Ave, Stanford, CA","51328979","10:00","8:00","www.klibros.com","klibros@blitmall.com"));	
+	 	datos.add(new Store("Tienda de Tecnologia","438 Mayfield Ave, Stanford, CA","51328980","10:00","8:00","www.ktecnologia.com","ktecnologia@blitmall.com"));
 	}
 	
 	

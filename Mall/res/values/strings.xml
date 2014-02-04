@@ -8,12 +8,11 @@
     <string name="item_zapatos">Tienda de Zapatos</string>
     <string name="item_libros">Tienda de Libros</string>
     <string name="item_tecnologia">Tienda de Tecnologia</string>
-    <string name="title_activity_ropa">RopaActivity</string>
-    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_details">Detalles de Tienda</string>
     <string name="txthours">Horarios: </string>
     <string name="txtweek">Lunes a Sabado: </string>
     <string name="btnCall"> LLAMAR </string>
-    <string name="title_activity_image">ImageActivity</string>
+    <string name="title_activity_image">Detalles de Imagen</string>
     <string name="txtComment">Variedad en ropa, zapatos y otros</string>
     <string name="btnImage">Fotografia</string>
 

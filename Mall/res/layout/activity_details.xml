@@ -91,7 +91,7 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnCall"
             android:layout_width="218dp"
             android:layout_height="wrap_content"
             android:text="@string/btnCall" />

@@ -61,9 +61,8 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated method stub
 			
 			  Intent  intent = new Intent(getApplicationContext(),ImageActivity.class);
-			  intent.putExtra(ImageActivity.QUERY,"");
-			
-			startActivity(intent);
+			 // intent.putExtra(ImageActivity.QUERY,"");
+			  startActivity(intent);
 		}
 		
 	

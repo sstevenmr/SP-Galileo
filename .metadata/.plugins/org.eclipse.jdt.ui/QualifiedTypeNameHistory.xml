@@ -1,46 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.content.Intent"/>
-<fullyQualifiedTypeName name="android.widget.TextView"/>
-<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
-<fullyQualifiedTypeName name="android.net.Uri"/>
-<fullyQualifiedTypeName name="com.galileo.telescopio.R.string"/>
-<fullyQualifiedTypeName name="android.view.ViewGroup.LayoutParams"/>
-<fullyQualifiedTypeName name="com.galileo.telescopio.R"/>
-<fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
-<fullyQualifiedTypeName name="android.util.Log"/>
-<fullyQualifiedTypeName name="android.widget.RadioGroup"/>
-<fullyQualifiedTypeName name="android.widget.RadioGroup.OnCheckedChangeListener"/>
-<fullyQualifiedTypeName name="com.galileo.telescopio.R.layout"/>
-<fullyQualifiedTypeName name="android.R.layout"/>
-<fullyQualifiedTypeName name="android.R.id"/>
-<fullyQualifiedTypeName name="com.galileo.telescopio.R.id"/>
-<fullyQualifiedTypeName name="android.widget.EditText"/>
-<fullyQualifiedTypeName name="java.util.Locale"/>
-<fullyQualifiedTypeName name="java.util.Calendar"/>
-<fullyQualifiedTypeName name="android.util.Patterns"/>
-<fullyQualifiedTypeName name="android.text.util.Linkify"/>
-<fullyQualifiedTypeName name="android.view.Window"/>
-<fullyQualifiedTypeName name="android.net.UrlQuerySanitizer.ValueSanitizer"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="android.Manifest"/>
-<fullyQualifiedTypeName name="android.R"/>
-<fullyQualifiedTypeName name="android.R.string"/>
-<fullyQualifiedTypeName name="android.widget.AbsListView.RecyclerListener"/>
-<fullyQualifiedTypeName name="android.renderscript.Sampler.Value"/>
-<fullyQualifiedTypeName name="com.sp.mall.R.attr"/>
-<fullyQualifiedTypeName name="com.sp.mall.R.string"/>
-<fullyQualifiedTypeName name="android.app.ListActivity"/>
-<fullyQualifiedTypeName name="java.awt.List"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="android.widget.ListView"/>
-<fullyQualifiedTypeName name="android.view.Menu"/>
-<fullyQualifiedTypeName name="com.sp.mall.R.layout"/>
-<fullyQualifiedTypeName name="com.sp.mall.Store"/>
-<fullyQualifiedTypeName name="com.sp.mall.R.id"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
-<fullyQualifiedTypeName name="android.widget.TabHost"/>
-<fullyQualifiedTypeName name="com.sp.mall.MainActivity"/>
-<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="com.sp.mall.DetailsActivity"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,9 @@
+package com.example.ejemplo;
+
+import android.support.v4.app.Fragment;
+import android.webkit.WebView;
+
+public class CountryInfoFragment extends Fragment {
+	private WebView webView;
+	
+}

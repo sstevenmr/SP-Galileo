@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 	ArrayAdapter<String> adaptador;
 	ArrayList<String> stores;
     Intent intent = null;
-    TabHost tabHost=null;
+   
     Button btnImage;
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,35 @@
+package com.example.ejemplo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import android.R.anim;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.ArrayAdapter;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		String[] arrayContries = new String[]{
+				"Brasil","Mexioc","Colombia",
+				"Argentina", "Peru","Venezuela",
+				"Chile","Ecuador","Guatemala","Cuba"
+		};
+		ArrayList<String> contries = new ArrayList<String>(Arrays.asList(arrayContries));
+		ArryaAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,contries);
+		ListView list = (ListView) findViewById(R.id.listView);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}

@@ -2,4 +2,22 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.sp.mall.DetailsActivity"/>
 <fullyQualifiedTypeName name="android.view.MenuItem"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.AdapterContextMenuInfo"/>
+<fullyQualifiedTypeName name="android.support.v7.app.ActionBar"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="android.support.v7.internal.widget.AdapterViewICS.OnItemClickListener"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
+<fullyQualifiedTypeName name="com.example.ejemplo.R.layout"/>
+<fullyQualifiedTypeName name="android.view.MenuInflater"/>
+<fullyQualifiedTypeName name="com.example.ejemplo.R.menu"/>
+<fullyQualifiedTypeName name="android.app.Fragment"/>
+<fullyQualifiedTypeName name="com.example.fragments.CountriesListFragment"/>
+<fullyQualifiedTypeName name="com.example.fragments.CountriesFlagFragment"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentManager"/>
+<fullyQualifiedTypeName name="android.support.v7.app.ActionBar.TabListener"/>
+<fullyQualifiedTypeName name="com.example.ejemplo.R.id"/>
+<fullyQualifiedTypeName name="com.example.ejemplo.R.string"/>
+<fullyQualifiedTypeName name="android.support.v4.app.Fragment"/>
 </qualifiedTypeNameHistroy>

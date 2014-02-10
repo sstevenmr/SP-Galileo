@@ -1,0 +1,45 @@
+package com.example.data;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v7.appcompat.R;
+
+import com.example.ejemplo.R;
+import com.example.fragments.FlagFragment;
+public class FlagPagerAdapter extends FragmentPagerAdapter {
+
+	public FlagPagerAdapter(FragmentManager fm) {
+		super(fm);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public Fragment getItem(int position) {
+		int[] arrayFlags = new int[]{
+				R.d
+				R.drawable.brazil,
+				R.drawable.mexico,
+				R.drawable.colombia,
+				R.drawable.argentina,
+				R.drawable.peru,
+				R.drawable.venezuela,
+				R.drawable.chile,
+				R.drawable.ecuador,
+				R.drawable.guatemala,
+				R.drawable.cuba,
+		};
+		Fragment fragment = new FlagFragment();
+		Bundle args = new Bundle();
+		args.putInt(FlagFragment.RESOURCE,arrayFlags[position]);
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	@Override
+	public int getCount() {	
+		return 10;
+	}
+
+}

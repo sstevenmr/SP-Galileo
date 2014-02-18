@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.sp.mall;
+
+import android.support.v4.app.Fragment;
+
+public class CommentFragment extends Fragment {
+
+	/**
+	 * 
+	 */
+	public CommentFragment() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,9 +1,0 @@
-package com.example.fragments;
-
-import android.support.v4.app.Fragment;
-import android.support.v7.internal.widget.AdapterViewICS.OnItemClickListener;
-
-public class CountriesListFragment extends Fragment implements
-		OnItemClickListener {
-
-}

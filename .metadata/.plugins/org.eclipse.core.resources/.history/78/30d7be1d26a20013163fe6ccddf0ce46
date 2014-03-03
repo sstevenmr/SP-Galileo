@@ -1,0 +1,43 @@
+package com.sp.mall.data;
+
+import com.sp.mall.R;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+public class ImageAdapter extends BaseAdapter {
+	int[] arrayImage = new int[]{R.drawable.mall1,
+								R.drawable.mall2,
+								R.drawable.mall3,
+								R.drawable.mall4,
+								R.drawable.mall5};
+	String[] arrayCountries = new String[]{
+								"mall1","mall2","mall3",
+								"mall4","mall5"};
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getItem(int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public View getView(int arg0, View arg1, ViewGroup arg2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

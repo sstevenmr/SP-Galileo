@@ -1,0 +1,10 @@
+package com.sp.mall.data;
+
+public class Comment {
+	private String comment;
+	public Comment(String comment) {
+		// TODO Auto-generated constructor stub
+		this.comment = comment;
+	}
+
+}

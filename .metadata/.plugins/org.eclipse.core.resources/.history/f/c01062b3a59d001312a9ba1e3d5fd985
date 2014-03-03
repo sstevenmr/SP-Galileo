@@ -1,0 +1,12 @@
+package com.example.demo3;
+
+import android.support.v4.util.LruCache;
+
+public class BitmapLRUCache extends LruCache<String, Bitmap> {
+
+	public BitmapLRUCache(int maxSize) {
+		super(maxSize);
+		// TODO Auto-generated constructor stub
+	}
+
+}

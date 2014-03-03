@@ -1,0 +1,14 @@
+[{type:"store",
+	name:"Tienda de Zapatos",
+	address:"435 Mayfield Ave, Stanford, CA",
+	phoneNumber:"51328976",
+	horary:"10:00 a 8:00",
+	website:"www.kzaptos.com",
+	email:"kzaptos@blitmall.com",
+	commentList:[{comment:"Mi lugar favorito"},
+				 {comment:"excelentes ofertas"}],
+	favoriteNum:"5",
+	geography:[lat:14.61,lon:-90.50],
+	}]
+
+	

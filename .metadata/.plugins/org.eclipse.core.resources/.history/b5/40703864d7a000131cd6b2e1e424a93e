@@ -1,0 +1,9 @@
+package com.sp.mall.data;
+
+public class Photo {
+
+	public Photo() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

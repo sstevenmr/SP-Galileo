@@ -1,0 +1,12 @@
+package com.example.data;
+
+public class Helper {
+
+	public Helper() {
+		public final static String INSTAGRAM_API_KEY = " 	";
+		public final static String BASE_API_URL = " ";
+		// TODO Auto-generated constructor stub
+		
+	}
+
+}

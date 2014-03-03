@@ -1,0 +1,50 @@
+package com.example.data;
+
+import com.example.demo3.R;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+public class ImageAdapter extends BaseAdapter {
+	int[] arrayFlags = new int[]{R.drawable.brazil,
+			R.drawable.mexico,
+			R.drawable.colombia,
+			R.drawable.argentina,
+			R.drawable.peru,
+			R.drawable.venezuela,
+			R.drawable.chile,
+			R.drawable.ecuador,
+			R.drawable.guatemala,
+			R.drawable.cuba};
+	String[] arrayCountries = new String[]{"Brasil","Mexico",
+			"Colombia","Argentina","peru","Venezuela","chile",
+			"Ecuador","Guatemala","Cuba"};
+	public ImageAdapter() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getItem(int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public View getView(int arg0, View arg1, ViewGroup arg2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,42 @@
+package com.sp.mall.fragments;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.widget.ArrayAdapter;
+
+import com.sp.mall.R;
+
+public class PhotoDialogFragment extends DialogFragment {
+
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		builder.setTitle("Menu");
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1);
+		builder.setMessage(R.string.msg_dialog).setPositiveButton(R.string.msg_photo, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		}).setNegativeButton(R.string.msg_gallery, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		return builder.create();
+	}
+
+	public PhotoDialogFragment() {
+		
+		
+	}
+
+}

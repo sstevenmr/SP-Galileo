@@ -1,0 +1,123 @@
+package com.sp.mall.data;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.sp.mall.R;
+
+public class ImageAdapter extends BaseAdapter {
+	public ArrayList<Integer> arrayImage = new ArrayList<Integer>();
+	public ArrayList<String> arrayStringMall = new ArrayList<String>();
+	private Resources resources;
+	private LayoutInflater inflater;
+	public static int codigo=0;
+	Bitmap bit;
+	
+	ViewHolder holder;
+	public ImageAdapter(Context context){
+		arrayImage.add(R.drawable.mall1);
+		arrayImage.add(R.drawable.mall2);
+		arrayImage.add(R.drawable.mall3);
+		arrayImage.add(R.drawable.mall4);
+		arrayImage.add(R.drawable.mall5);
+		arrayStringMall.add("mall1");
+		arrayStringMall.add("mall2");
+		arrayStringMall.add("mall3");
+		arrayStringMall.add("mall4");
+		arrayStringMall.add("mall5");
+		this.resources=context.getResources();
+		this.inflater = LayoutInflater.from(context);
+	}
+
+	public void setArrays(int id,String mall,Bitmap bit){
+		arrayStringMall.add(mall);
+		arrayImage.add(id);
+		holder.txtName.setText(arrayStringMall.get(arrayStringMall.size()-1));
+		holder.imgMall.setImageBitmap(bit);
+		//this.notifyDataSetChanged();
+		codigo=codigo+1;
+		System.out.println(codigo);
+	}
+	@Override
+	public int getCount() {
+		return arrayImage.size();
+	}
+
+	@Override
+	public Object getItem(int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup arg2) {
+		System.out.print("veces ");
+		if(codigo==0){
+			if(convertView ==null){
+				convertView = inflater.inflate(R.layout.list_image, null);
+				holder = new ViewHolder();
+				
+				holder.txtName = (TextView) convertView.findViewById(R.id.txtComment);
+				holder.imgMall = (ImageView) convertView.findViewById(R.id.imageMall);
+				
+				convertView.setTag(holder);
+					
+			}else{
+			holder = (ViewHolder) convertView.getTag();
+		}
+			holder.txtName.setText(arrayStringMall.get(position));
+			holder.imgMall.setImageBitmap(decodeSampleBitmapFromResource(resources,arrayImage.get(position),400,200));		
+	}
+		return convertView;
+	}
+	
+	static class ViewHolder{
+		public ImageView imgMall;
+		public TextView txtName;
+	}
+	public static Bitmap decodeSampleBitmapFromResource(Resources res, int resId, int reqWidth,int reqHight){
+		final BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeResource(res,resId,options);
+		options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHight);
+		options.inJustDecodeBounds = false;
+		return BitmapFactory.decodeResource(res, resId,options);
+	}
+	
+	public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+	    // Raw height and width of image
+	    final int height = options.outHeight;
+	    final int width = options.outWidth;
+	    int inSampleSize = 1;
+
+	    if (height > reqHeight || width > reqWidth) {
+
+	        // Calculate ratios of height and width to requested height and width
+	        final int heightRatio = Math.round((float) height / (float) reqHeight);
+	        final int widthRatio  = Math.round((float) width / (float) reqWidth);
+
+	        // Choose the smallest ratio as inSampleSize value, this will guarantee
+	        // a final image with both dimensions larger than or equal to the
+	        // requested height and width.
+	        inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+	    }
+
+	    return inSampleSize;
+	}
+}

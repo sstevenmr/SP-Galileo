@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=Demo7_S2/C:\/Users\/Steven\/Desktop\/Android\/Demo7_S2\/libs\/android-support-v4.jar&lt;android.support.v4.app(Fragment.class[Fragment" modifiers="33" timestamp="1391702562362"/>
-<typeInfo handle="=Demo7_S2/C:\/Users\/Steven\/Desktop\/Android\/Demo7_S2\/libs\/android-support-v4.jar&lt;android.support.v4.app(FragmentPagerAdapter.class[FragmentPagerAdapter" modifiers="1057" timestamp="1391702562362"/>
-<typeInfo handle="=Demo8_S2/C:\/Users\/Steven\/Desktop\/Android\/Demo8_S2\/libs\/android-support-v4.jar&lt;android.support.v4.app(Fragment.class[Fragment" modifiers="33" timestamp="1391702562362"/>
 <typeInfo handle="=Mall/C:\/Users\/Steven\/Desktop\/SP-Galileo-master\/Mall\/libs\/android-support-v4.jar&lt;android.support.v4.app(FragmentPagerAdapter.class[FragmentPagerAdapter" modifiers="1057" timestamp="1391381554887"/>
 <typeInfo handle="=Mall/C:\/Users\/Steven\/Desktop\/SP-Galileo-master\/Mall\/libs\/android-support-v4.jar&lt;android.support.v4.app(Fragment.class[Fragment" modifiers="33" timestamp="1391381554887"/>
 <typeInfo handle="=Demo3/C:\/Users\/Steven\/Desktop\/Android\/Demo3\/libs\/android-support-v4.jar&lt;android.support.v4.app(Fragment.class[Fragment" modifiers="33" timestamp="1393121625493"/>
 <typeInfo handle="=Demo3/C:\/Users\/Steven\/Desktop\/Android\/Demo3\/libs\/android-support-v4.jar&lt;android.support.v4.app(DialogFragment.class[DialogFragment" modifiers="33" timestamp="1393121625493"/>
 <typeInfo handle="=Demo3_10/C:\/Users\/Steven\/Desktop\/Android\/Demo3_10\/libs\/android-support-v4.jar&lt;android.support.v4.util(LruCache.class[LruCache" modifiers="33" timestamp="1393121625493"/>
+<typeInfo handle="=Mall/C:\/Users\/Steven\/Desktop\/Developer\/Eclipse\/Eclipse_and_Android_SDK\/adt-bundle-windows-x86-20130729\/adt-bundle-windows-x86-20130729\/sdk\/platforms\/android-18\/android.jar&lt;android.widget(BaseAdapter.class[BaseAdapter" modifiers="1057" timestamp="1373504738000"/>
+<typeInfo handle="=Mall/C:\/Users\/Steven\/Desktop\/SP-Galileo-master\/Mall\/libs\/android-support-v4.jar&lt;android.support.v4.app(DialogFragment.class[DialogFragment" modifiers="33" timestamp="1391381554887"/>
+<typeInfo handle="=Mall/C:\/Users\/Steven\/Desktop\/SP-Galileo-master\/Mall\/libs\/android-support-v4.jar&lt;android.support.v4.util(LruCache.class[LruCache" modifiers="33" timestamp="1391381554887"/>
 </typeInfoHistroy>

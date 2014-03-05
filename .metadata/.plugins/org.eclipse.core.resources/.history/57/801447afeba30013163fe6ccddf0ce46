@@ -1,0 +1,10 @@
+package com.sp.mall.data;
+
+public class Helper {
+	public final static String INSTAGRAM_API_KEY = "9b90341097b64eb0bf419c6d6ab0da5a";
+	public final static String BASE_API_URL ="";
+	public Helper() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

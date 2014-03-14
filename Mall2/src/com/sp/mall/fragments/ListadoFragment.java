@@ -2,6 +2,7 @@ package com.sp.mall.fragments;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.sp.mall.R;
 import com.sp.mall.R.id;
 import com.sp.mall.R.layout;
@@ -11,7 +12,11 @@ import com.sp.mall.activities.ImageActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,10 +30,13 @@ public class ListadoFragment extends Fragment {
 	ArrayAdapter<String> adaptador;
 	ArrayList<String> stores;
 	Button btnImage;
+	View view=null;
     Intent intent = null;
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 		        Bundle savedInstanceState) {
-			View view = inflater.inflate(R.layout.fragment_list, container, false);
+			view = inflater.inflate(R.layout.fragment_list, container, false);
+			
+			
 		    stores = new ArrayList<String>();
 		    lista = (ListView) view.findViewById(R.id.listView1);
 		    this.addData();
@@ -58,5 +66,5 @@ public class ListadoFragment extends Fragment {
 		        stores.add("Tienda de Tecnologia");
 		        stores.add("Imagen");
 		    }
-		    
+		 
 }

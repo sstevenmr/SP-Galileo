@@ -1,0 +1,47 @@
+package com.sp.mall.data;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+public class DBAdapter {
+	private DBHelper dbHelper;
+	private static final String DATABASE_NAME = "places.db";
+	private static final int DATABASE_VERSION = 1;
+		
+	public DBAdapter(Context context) {
+		dbHelper = new DBHelper(context, DATABASE_NAME,null , DATABASE_VERSION);
+	}
+	
+	public void insert(Photo p){
+		ContentValues values  = buildFromTiendas(p);
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		try{
+			db.insertWithOnConflict(DBHelper.PLACES_TABLE, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+		}finally{
+			db.close();
+		}
+	}
+	
+	
+	public int getTotalTiendas(){
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+		Cursor cursor = db.query(DBHelper.PLACES_TABLE, null, null, null, null, null, null);
+		int total = cursor.getCount();
+		cursor.close();
+		db.close();
+		return total;
+	}
+	
+	public ContentValues buildFromTiendas(Photo p){
+		ContentValues values = new ContentValues();
+		values.put(DBHelper.KEY_ID, "1");
+		values.put(DBHelper.KEY_URL, p.getURL());
+		values.put(DBHelper.KEY_COMMENT, p.getCommentList().get(0).toString());
+		values.put(DBHelper.KEY_FAVORITE, p.getFavoriteNum());
+		return values;
+	}
+	
+	
+}

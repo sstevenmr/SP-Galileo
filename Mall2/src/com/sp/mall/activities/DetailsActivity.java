@@ -19,18 +19,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sp.mall.R;
 import com.sp.mall.data.Comment;
+import com.sp.mall.data.DBAdapter;
 import com.sp.mall.data.Store;
 
 public class DetailsActivity extends FragmentActivity {
+	private DBAdapter dbadapter;
 	public static final String QUERY = "query";
 	public static final int POSITION = 1;
 	public Store store = null;
@@ -40,26 +44,57 @@ public class DetailsActivity extends FragmentActivity {
 	public TextView txtPhoneNumber;
 	public TextView txtWebSite;
 	public TextView txtEmail;
+	DBAdapter dbAdapter;
 	int posDatos;
 	ListView lista;
 	TextView comment;
 	ArrayAdapter<String> adaptador;
+	ArrayList<Comment> comentarios;
 	List<Store> stores;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_details);	
+		setContentView(R.layout.activity_details);
+		dbadapter = new DBAdapter(this);
 		this.getData();
 		this.changeTextView();
 		this.call();
 		lista = (ListView) findViewById(R.id.listViewComments);
 		comment = (TextView) findViewById(R.id.editTextComment);
 		adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-		lista.setAdapter(adaptador);
-		ArrayList<Comment> comentarios = stores.get(POSITION).getCommentList();
-		for(int i=0;i<comentarios.size(); i++){
-			adaptador.add(comentarios.get(i).toString());
+		dbAdapter = new DBAdapter(this);
+		comentarios = stores.get(POSITION).getCommentList();
+		lista.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+				@Override
+				public boolean onItemLongClick(AdapterView<?> arg0,
+						View arg1, int arg2, long arg3) {
+					   dbAdapter.Delete(comentarios.get(arg2).gettId());
+					   comentarios.remove(arg2);
+					   adaptador.remove(comentarios.get(arg2).getComment());
+					   adaptador.notifyDataSetChanged();
+					   Log.e("total", dbadapter.getTotalComentario()+"");
+					   Log.e("arg", arg2+"");
+					   Log.e("lista", comentarios.size()+"");
+					   Log.e("adaptador", adaptador.getCount()+"");
+					return true;
+				}
+			});
+		
+		if(dbadapter.getTotalComentario()==0){
+			for(int i=0;i<comentarios.size(); i++){
+				adaptador.add(comentarios.get(i).toString());
+				dbadapter.insert(comentarios.get(i));
+			}
+		}else{
+			ArrayList<Comment>  dbComments = dbadapter.consulta();
+			for(int i=0;i<dbComments.size();i++){
+				adaptador.add(dbComments.get(i).getComment().toString());
+			}
 		}
+		int i = dbAdapter.getTotalComentario();
+		Log.e("ASDASD ", "Total" + i);
+		lista.setAdapter(adaptador);
 		sendComment();
 		
 	}
@@ -172,9 +207,18 @@ public class DetailsActivity extends FragmentActivity {
 			
 			@Override
 			public void onClick(View arg0) {
-				adaptador.add(comment.getText().toString());
+				String comentario = comment.getText().toString();
+				comentarios.add(new Comment(comentario,dbadapter.getTotalComentario()));
+				adaptador.add(comentario);
 				adaptador.notifyDataSetChanged();
+				Log.e("asdasd", dbadapter.getTotalComentario()+"");
+				dbAdapter.insert(new Comment(comentario, dbAdapter.getTotalComentario()));
+				Log.e("asdasd", dbadapter.getTotalComentario()+"");
 			}
 		});
 	}
+	public DBAdapter getDB(){
+		return dbadapter;
+	}
+	
 }

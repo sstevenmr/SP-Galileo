@@ -1,0 +1,9 @@
+package com.sp.mall.fragments;
+
+public class PlacesFragment {
+
+	public PlacesFragment() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

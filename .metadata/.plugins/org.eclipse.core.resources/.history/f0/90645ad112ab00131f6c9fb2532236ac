@@ -1,0 +1,61 @@
+package com.sp.mall.data;
+
+import java.util.ArrayList;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+public class DBAdapter {
+    private DBHelper dbHelper;
+    private static final String DATABASE_NAME = "places.db";
+    private static final int DATABASE_VERSION = 3;
+        
+    public DBAdapter(Context context) {
+        dbHelper = new DBHelper(context, DATABASE_NAME,null , DATABASE_VERSION);
+    }
+    
+    public void insert(Comment c){
+        ContentValues values  = buildFromComentario(c);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        try{
+            db.insert(DBHelper.COMMENT_TABLE,null,values);
+        }finally{
+            db.close();
+        }
+    }
+    
+    
+    public int getTotalComentario(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(DBHelper.COMMENT_TABLE, null, null, null, null, null, null);
+        int total = cursor.getCount();
+        cursor.close();
+        db.close();
+        return total;
+    }
+    
+    public ContentValues buildFromComentario(Comment c){
+    	Integer key = getTotalComentario()+1;
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.ID, key.toString());
+        values.put(DBHelper.KEY_COMMENT, c.getComment());
+   
+        return values;
+    }
+    
+    public ArrayList<String> consulta() {
+    	 ArrayList<String> comentarios = new ArrayList<String>();
+    	 SQLiteDatabase db = dbHelper.getReadableDatabase();
+         Cursor fila = db.query(DBHelper.COMMENT_TABLE, null, null, null, null, null, null);
+         while(fila.moveToNext()){
+        	 Comment c = new Comment();
+        	 c.setComment(fila.getString(fila.getColumnIndex(DBHelper.COMMENT_TABLE)));
+        	 comentarios.add(c);
+         }
+         db.close();
+         return comentarios;
+    }
+    
+}

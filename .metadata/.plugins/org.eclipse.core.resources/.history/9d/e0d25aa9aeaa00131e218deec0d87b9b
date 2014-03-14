@@ -1,0 +1,166 @@
+package com.sp.mall.fragments;
+
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.IntentSender;
+import android.location.Location;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
+import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.plus.model.people.Person.PlacesLived;
+import com.sp.mall.R;
+
+public class MapFragment extends Fragment implements OnConnectionFailedListener,ConnectionCallbacks,LocationListener{
+	private LocationClient locationClient;
+	private LocationRequest locationRequest;
+	public static final int CONNECTION_FAILURE_REQUEST = 9000;
+	public static final int MILLISECONDS_PER_SECOND = 1000;
+	public static final long UPDATE_INTERVAL_IN_MILLISECONDS =  MILLISECONDS_PER_SECOND * 5;
+	public static long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND * 1;
+	View view=null;
+	PlacesFragment places;
+	TextView txtLatLng = null;
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, 
+	        Bundle savedInstanceState) {
+			view = inflater.inflate(R.layout.map_fragment, container, false);
+			//PlacesFragment.mapId=mapId;
+			locationClient = new LocationClient(getActivity(),this,this);
+			locationRequest = LocationRequest.create();
+			locationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+			locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+			locationRequest.setFastestInterval(FAST_INTERVAL_CEILING_IN_MILLISECONDS);
+	        return view;
+	    }
+
+	@Override
+	public void onResume() {	
+		super.onResume();
+		FragmentManager manager = getFragmentManager();
+		PlacesFragment fragment = (PlacesFragment) manager.findFragmentById(R.id.fragmentMap);
+		if(servicesConected()){
+			manager.beginTransaction().show(fragment).commit();
+		}else{
+			manager.beginTransaction().hide(fragment).commit();
+		}
+	}
+
+	
+	private boolean servicesConected() {
+		
+		int code = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity());
+		
+		if(code == ConnectionResult.SUCCESS){
+			return true;
+		}else{
+			Dialog dialog = GooglePlayServicesUtil.getErrorDialog(code,this.getActivity(), 0);
+			if(dialog != null){
+				ErrorDialogFragment fragment = new ErrorDialogFragment();
+				fragment.setDialog(dialog);
+				fragment.show(getFragmentManager(), "error");
+			}
+			return false;
+		}
+		
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		locationClient.connect();
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		if(locationClient.isConnected()){
+			locationClient.removeLocationUpdates(this);
+		}
+		locationClient.disconnect();
+	}
+	
+	@Override
+	public void onConnectionFailed(ConnectionResult connectionResult) {
+		if(connectionResult.hasResolution()){
+			try{
+				connectionResult.startResolutionForResult(getActivity(), CONNECTION_FAILURE_REQUEST);
+			}catch(IntentSender.SendIntentException e){
+				Log.e("ERROR", Log.getStackTraceString(e));
+			}
+		}else{
+			Dialog dialog = GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(), getActivity(), CONNECTION_FAILURE_REQUEST);
+			if(dialog != null){
+				ErrorDialogFragment fragment = new ErrorDialogFragment();
+				fragment.setDialog(dialog);
+				fragment.show(getFragmentManager(), "error");
+			}
+			
+		}
+	}
+
+	@Override
+	public void onConnected(Bundle arg0) {
+	updateLocation(locationClient.getLastLocation());
+	locationClient.requestLocationUpdates(locationRequest,this);
+		
+	}
+
+	private void updateLocation(Location currentLocation) {
+			txtLatLng = (TextView) getView().findViewById(R.id.txtLatLng);
+			String 	latLng = "No disponible";
+			if(currentLocation != null){
+				latLng = getString(R.string.txt_lat_lng,currentLocation.getLatitude(),currentLocation.getLongitude());
+			}
+			txtLatLng.setText(latLng);
+	}
+
+	@Override
+	public void onDisconnected() {
+	}
+
+	@Override
+	public void onLocationChanged(Location arg0) {
+		//Log.e("ACTUALIZACION", arg0.toString());
+		updateLocation(arg0);
+	}
+   @Override
+	public void onOptionsMenu(Menu menu, MenuInflater inflater) {
+	 	getActivity().getMenuInflater().inflate(R.menu.mapmenu, menu);
+	}
+   
+   	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.e("holaaaa", "hojos de ")
+		/*if(item.getItemId()==R.id.action_Normal){
+			
+		}else if (item.getItemId()==R.id.action_Satelital){
+		
+		}else if (item.getItemId()==R.id.action_Hibrido){
+			
+		}else if (item.getItemId()==R.id.action_Terreno){
+			
+		}*/
+		
+		return true;
+	}
+
+}

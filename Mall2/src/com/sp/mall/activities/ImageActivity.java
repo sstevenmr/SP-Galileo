@@ -11,13 +11,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,11 +25,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sp.mall.R;
 import com.sp.mall.data.Comment;
+import com.sp.mall.data.DBAdapter;
 import com.sp.mall.data.Photo;
 
 public class ImageActivity extends FragmentActivity {
 	public static String QUERY = "query";
 	ListView lista;
+	private DBAdapter dbadapter;
 	TextView comment;
 	ArrayAdapter<String> adaptador;
 	ArrayList<Photo> photos; 
@@ -37,16 +39,19 @@ public class ImageActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.form_fragment);
-		lista = (ListView) findViewById(R.id.listViewComments);
-		comment = (TextView) findViewById(R.id.editTextComment);
-		adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-		getData();
-		ArrayList<Comment> comentarios = photos.get(photos.size()-1).getCommentList();
-		for(int i=0;i<comentarios.size(); i++){
+		//lista = (ListView) findViewById(R.id.listViewComments);
+		//dbadapter = new DBAdapter(this);
+		//comment = (TextView) findViewById(R.id.editTextComment);
+		//adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+		//getData();
+		//ArrayList<Comment> comentarios = photos.get(photos.size()-1).getCommentList();
+	    // Log.e("asdasd", "total:" + total );
+		/*for(int i=0;i<comentarios.size(); i++){
 			adaptador.add(comentarios.get(i).toString());
-		}
-		lista.setAdapter(adaptador);
-		sendComment();
+			
+		}*/
+		//lista.setAdapter(adaptador);
+		//sendComment();
 	}
 	
 	@Override
@@ -77,7 +82,7 @@ public class ImageActivity extends FragmentActivity {
         String myjsonstring = sb.toString();
         Gson gson = new Gson();
         Type typePhotos = new TypeToken<List<Photo>>(){}.getType();
-        photos = gson.fromJson(myjsonstring, typePhotos);   
+        photos = gson.fromJson(myjsonstring, typePhotos); 
 	}
 	
 	@Override

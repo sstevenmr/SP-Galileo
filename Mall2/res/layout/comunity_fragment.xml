@@ -8,12 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
-        <ListView
+		<com.markupartist.android.widget.PullToRefreshListView
+		    android:id="@+id/android:listToRefresh"
+		    android:layout_height="fill_parent"
+		    android:layout_width="fill_parent"
+   		 />
+		
+     <!--    <ListView
             android:id="@+id/listViewP"
             android:layout_width="match_parent"
             android:layout_height="400dp" >
-        </ListView>
+        </ListView> -->
 
         <ImageButton
             android:id="@+id/btnFromCamera"

@@ -1,0 +1,29 @@
+package com.sp.mall.data;
+
+public class Comment {
+	private String comment;
+	public static int idAux;
+	private int id=0;
+	public Comment(String comment) {
+		// TODO Auto-generated constructor stub
+		this.setComment(comment);
+		idAux++;
+		id = idAux;
+	}
+	public Comment(){
+	}
+	public String getComment() {
+		return comment;
+	}
+	public int getId(int i ) {
+		return  id;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
+	public String toString(){
+		return comment.toString();
+	}
+
+}

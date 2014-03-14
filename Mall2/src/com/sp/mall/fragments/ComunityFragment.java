@@ -18,6 +18,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -30,7 +31,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -38,8 +38,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.markupartist.android.widget.PullToRefreshListView;
+import com.markupartist.android.widget.PullToRefreshListView.OnRefreshListener;
 import com.sp.mall.R;
 import com.sp.mall.data.Comment;
+import com.sp.mall.data.DBAdapter;
 import com.sp.mall.data.Helper;
 import com.sp.mall.data.ImageAdapter;
 import com.sp.mall.data.Photo;
@@ -50,23 +53,39 @@ public class ComunityFragment extends Fragment {
 	ImageButton btnFromCamera;
 	ImageAdapter adapter=null;
 	View view;
-	ListView list;
+	//ListView list;
 	PhotoDialogFragment dialog;
 	ArrayList<Photo> imagesArray;
+	PullToRefreshListView listViewRefresh;
 	Photo image;
 	String  photoPath;
+	int sizeOfArray=0;
+	DBAdapter dbAdapter;
 	ArrayList<Comment> test = new ArrayList<Comment>();
 	public static RequestQueue requestQueue;
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 	        Bundle savedInstanceState) { 
 	        view = inflater.inflate(R.layout.comunity_fragment,container, false);
 	    	requestQueue = Volley.newRequestQueue(getActivity());
-	        list = (ListView) view.findViewById(R.id.listViewP);
+	     //   list = (ListView) view.findViewById(R.id.listViewP);
+	    	listViewRefresh = (PullToRefreshListView) view.findViewById(R.id.android_listToRefresh);
 	        imagesArray = new ArrayList<Photo>();
 	        adapter = new ImageAdapter(getActivity(),imagesArray);
-	        list.setAdapter(adapter);
+	        listViewRefresh.setAdapter(adapter);
 	        btnFromCamera = (ImageButton) view.findViewById(R.id.btnFromCamera);
 	        dialog = new PhotoDialogFragment();
+	        dbAdapter = new DBAdapter(view.getContext());
+	        listViewRefresh.setOnRefreshListener(new OnRefreshListener() {
+
+				@Override
+				public void onRefresh() {
+					imagesArray.clear();
+					adapter.notifyDataSetChanged();
+
+					 new GetDataTask().execute();
+				}
+	    	});
+	    
 	        btnFromCamera.setOnClickListener(new OnClickListener() {
 	    				@Override
 	    				public void onClick(View v) {
@@ -101,6 +120,21 @@ public class ComunityFragment extends Fragment {
 	        return view;
 	}
 	
+	 private class GetDataTask extends AsyncTask<Void, Void, String[]> {
+ 	    @Override
+ 	    protected void onPostExecute(String[] result) {
+ 	    	APICall();
+ 	       listViewRefresh.onRefreshComplete();
+ 	        super.onPostExecute(result);
+ 	    }
+
+		@Override
+		protected String[] doInBackground(Void... arg0) {
+			
+			return null;
+		}
+ 	}
+	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -123,6 +157,7 @@ public class ComunityFragment extends Fragment {
 	
 	private void APICall() {
 		// TODO Auto-generated method stub
+	
 		String url = Helper.getRecentMediaUrl("guatemala");
 		view.findViewById(R.id.progressBar1).setVisibility(View.VISIBLE);
 		Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>(){
@@ -130,8 +165,9 @@ public class ComunityFragment extends Fragment {
 			public void onResponse(JSONObject arg0) {
 				// TODO Auto-generated method stub
 				view.findViewById(R.id.progressBar1).setVisibility(View.GONE);
-			    view.findViewById(R.id.listViewP).setVisibility(view.VISIBLE);
+			    view.findViewById(R.id.android_listToRefresh).setVisibility(view.VISIBLE);
 				JSONArray data;
+				Comment comentario;
 				try{
 					data = arg0.getJSONArray("data");
 					for(int i =0;i<data.length();i++){
@@ -142,11 +178,13 @@ public class ComunityFragment extends Fragment {
 							JSONObject images = element.getJSONObject("images");
 							JSONObject standardResolution = images.getJSONObject("standard_resolution");
 							String userName = user.getString("username");
-							String imgUrl = standardResolution.getString("url");		
-							test.add(new Comment("hola"));
+							String imgUrl = standardResolution.getString("url");
+							comentario = new Comment("hola",dbAdapter.getTotalComentario()+1);
+							test.add(comentario);
 							image = new Photo(imgUrl,userName,test,"20");
-							imagesArray.add(image);
-							
+							if(imagesArray.contains(image) == false ){
+								imagesArray.add(image);
+							}	
 						}
 						
 					}
@@ -226,6 +264,9 @@ public class ComunityFragment extends Fragment {
 
 	    return BitmapFactory.decodeFile(path, bmOptions);            
 	}
+	
+	
+	
 		
 }
 

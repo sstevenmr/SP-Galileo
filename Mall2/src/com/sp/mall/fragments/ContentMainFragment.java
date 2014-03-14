@@ -11,14 +11,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import com.sp.mall.activities.MainActivity;
+
 import com.sp.mall.R;
-import com.sp.mall.fragments.*;
+import com.sp.mall.activities.MainActivity;
+import com.sp.mall.data.DBAdapter;
 
 public class ContentMainFragment extends Fragment implements TabListener {
 		ListView lista;
@@ -74,7 +77,11 @@ public class ContentMainFragment extends Fragment implements TabListener {
 			// TODO Auto-generated method stub
 			
 		}
-		
+		 @Override
+			public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+			 getActivity().getMenuInflater().inflate(R.menu.mapmenu, menu);
+			}
+
 	}
 
 

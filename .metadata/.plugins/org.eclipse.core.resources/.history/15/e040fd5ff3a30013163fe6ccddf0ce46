@@ -1,7 +1,0 @@
-package com.sp.mall.data;
-
-import android.support.v4.util.LruCache;
-
-public class BitmapLRUCache extends LruCache<K, V> {
-
-}

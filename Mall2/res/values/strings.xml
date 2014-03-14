@@ -29,4 +29,11 @@
 	     <item>Tiendas</item>
 	     <item>Comunidad</item>
 	 </string-array>
+	 <string name="txt_marker_title">Lugar agregado %1$s</string>
+	 <string name="txt_marker_snipet">A las %1$s</string>
+	 <string name="txt_lat_lng">Lat:%1$.1f Lng:%2$.1f</string>
+	 <string name="txt_Normal">Normal</string>
+	 <string name="txt_Satelital">Satelital</string>
+	 <string name="txt_Hibrido">Hibrido</string>
+	 <string name="txt_Terreno">Terreno</string>
 </resources>

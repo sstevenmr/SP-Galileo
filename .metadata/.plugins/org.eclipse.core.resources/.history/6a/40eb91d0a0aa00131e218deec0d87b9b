@@ -1,0 +1,242 @@
+package com.sp.mall.fragments;
+
+import java.util.ArrayList;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.sp.mall.R;
+import com.sp.mall.R.id;
+import com.sp.mall.R.layout;
+import com.sp.mall.activities.DetailsActivity;
+import com.sp.mall.activities.ImageActivity;
+
+import android.content.ComponentName;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SubMenu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+
+public class ListadoFragment extends Fragment {
+	ListView lista;
+	ArrayAdapter<String> adaptador;
+	ArrayList<String> stores;
+	Button btnImage;
+	View view=null;
+    Intent intent = null;
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, 
+		        Bundle savedInstanceState) {
+			view = inflater.inflate(R.layout.fragment_list, container, false);
+			
+			
+		    stores = new ArrayList<String>();
+		    lista = (ListView) view.findViewById(R.id.listView1);
+		    this.addData();
+			 adaptador = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, stores);
+			 lista.setAdapter(adaptador);
+			 lista.setTextFilterEnabled(true);
+			 lista.setOnItemClickListener(new OnItemClickListener() {
+					public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+						if(position==4){
+							intent = new Intent(getActivity(),ImageActivity.class);
+						}else{
+							intent = new Intent(getActivity(),DetailsActivity.class);
+							intent.putExtra(DetailsActivity.QUERY, (int)position);
+						}
+							
+							startActivity(intent);
+			        }
+			 });
+			return view;
+		    }
+		
+		
+		 public void addData(){
+		        stores.add("Tienda de Zapatos"); 
+		        stores.add("Tienda de Ropa"); 
+		        stores.add("Tienda de Libros"); 
+		        stores.add("Tienda de Tecnologia");
+		        stores.add("Imagen");
+		    }
+		 
+		 @Override
+			public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+			 Menu menu1 = new Menu() {
+				
+				@Override
+				public int size() {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+				
+				@Override
+				public void setQwertyMode(boolean isQwerty) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void setGroupVisible(int group, boolean visible) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void setGroupEnabled(int group, boolean enabled) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void setGroupCheckable(int group, boolean checkable,
+						boolean exclusive) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void removeItem(int id) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void removeGroup(int groupId) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public boolean performShortcut(int keyCode, KeyEvent event, int flags) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public boolean performIdentifierAction(int id, int flags) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public boolean isShortcutKey(int keyCode, KeyEvent event) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public boolean hasVisibleItems() {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public MenuItem getItem(int index) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public MenuItem findItem(int id) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public void close() {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void clear() {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public SubMenu addSubMenu(int groupId, int itemId, int order, int titleRes) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public SubMenu addSubMenu(int groupId, int itemId, int order,
+						CharSequence title) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public SubMenu addSubMenu(int titleRes) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public SubMenu addSubMenu(CharSequence title) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public int addIntentOptions(int groupId, int itemId, int order,
+						ComponentName caller, Intent[] specifics, Intent intent, int flags,
+						MenuItem[] outSpecificItems) {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+				
+				@Override
+				public MenuItem add(int groupId, int itemId, int order, int titleRes) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public MenuItem add(int groupId, int itemId, int order, CharSequence title) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public MenuItem add(int titleRes) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public MenuItem add(CharSequence title) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+			};
+			 	getActivity().getMenuInflater().inflate(R.menu.mapmenu, menu);
+			}
+
+
+			@Override
+			public boolean onOptionsItemSelected(MenuItem item) {
+				if(item.getItemId()==R.id.action_Normal){
+					PlacesFragment.auxMap(GoogleMap.MAP_TYPE_NORMAL);
+				}else if(item.getItemId()==R.id.action_Normal){
+					PlacesFragment.auxMap(GoogleMap.MAP_TYPE_SATELLITE);
+				}else if(item.getItemId()==R.id.action_Normal){
+					PlacesFragment.auxMap(GoogleMap.MAP_TYPE_HYBRID);
+				}else if(item.getItemId()==R.id.action_Normal){
+					PlacesFragment.auxMap(GoogleMap.MAP_TYPE_TERRAIN);
+				}
+				return super.onOptionsItemSelected(item);
+			}
+
+}

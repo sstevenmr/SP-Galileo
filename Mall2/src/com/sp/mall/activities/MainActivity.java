@@ -6,16 +6,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.sp.mall.R;
 import com.sp.mall.fragments.ComunityFragment;
 import com.sp.mall.fragments.ContentMainFragment;
 import com.sp.mall.fragments.MainImageFragment;
+import com.sp.mall.fragments.PlacesFragment;
 
 
 
@@ -23,6 +28,7 @@ public class MainActivity extends ActionBarActivity{
 	private ListView drawerList;
 	private DrawerLayout drawerLayout;
 	private String[] drawerOptions ;
+	private PlacesFragment places;
 	private Fragment[] fragments = new Fragment[]{new MainImageFragment(),new ContentMainFragment(), new ComunityFragment()};
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +90,25 @@ public class MainActivity extends ActionBarActivity{
   }
     public boolean onCreateOptionsMenu(Menu menu) {
   		// Inflate the menu; this adds items to the action bar if it is present.
-  		getMenuInflater().inflate(R.menu.main, menu);
+  		getMenuInflater().inflate(R.menu.mapmenu, menu);
   		return true;
   	}
+   
+	   	
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+			places =  (PlacesFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMap);
+			if(item.getItemId()==R.id.action_Normal){
+				places.mapId = GoogleMap.MAP_TYPE_NORMAL;
+			}else if(item.getItemId()==R.id.action_Satelital){
+				places.mapId = GoogleMap.MAP_TYPE_SATELLITE;
+			}else if(item.getItemId()==R.id.action_Hibrido){
+				places.mapId = GoogleMap.MAP_TYPE_HYBRID;
+			}else if(item.getItemId()==R.id.action_Terreno){
+				places.mapId = GoogleMap.MAP_TYPE_TERRAIN;
+			}
+			places.setupMap();
+			return true;
+		}
+
 }

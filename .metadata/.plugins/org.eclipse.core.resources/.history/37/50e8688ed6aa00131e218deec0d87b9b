@@ -1,0 +1,12 @@
+package com.sp.mall.data;
+
+public class DBAdapter {
+	private DBHelper dbHelper;
+	private static final String DATABASE_NAME = "places";
+	private static final String DATABASE_VERSION = 1;
+		
+	public DBAdapter(Context context) {
+		dbHelper = new DBHelper(context, DATABASE_NAME,null , DATABASE_VERSION);
+	}
+
+}

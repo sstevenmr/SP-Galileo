@@ -16,10 +16,10 @@
         android:layout_height="200dp"
         android:src="@drawable/img1" />
 
-    <fragment 
+   <!-- <fragment 
         android:name="com.sp.mall.fragments.CommentFragment"
         android:id="@+id/commentFragment"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-     />
+     /> -->
 </LinearLayout>

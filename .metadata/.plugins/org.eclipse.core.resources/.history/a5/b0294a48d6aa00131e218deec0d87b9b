@@ -1,0 +1,9 @@
+package com.sp.mall.data;
+
+public class DBAdapter {
+
+	public DBAdapter() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
